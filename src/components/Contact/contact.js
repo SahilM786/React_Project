@@ -1,4 +1,4 @@
-import React, { useRef,useState } from "react";
+import React, { useRef, useState } from "react";
 import "./contact.css";
 import Client1 from "../../assets/walmart.png";
 import Client2 from "../../assets/adobe.png";
@@ -10,6 +10,10 @@ import YouTubeIcon from "../../assets/youtube.png";
 import InstagramIcon from "../../assets/instagram.png";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
+import BTN from "../Button/button";
+// import Tooltip from "@material-ui/core/Tooltip";
+// import { Button } from "rsuite";
+// import { LineWave } from "react-loader-spinner"
 
 const sucessNotify = (name) => {
   console.log("BUTTON CLICKED");
@@ -19,28 +23,39 @@ const sucessNotify = (name) => {
   );
 };
 
-const errorNotify = (message)=>{
+const errorNotify = (message) => {
   toast.error(message);
-}
+};
 
 const Contact = () => {
-  const [name,setName] = useState("")
-  const [email,setEmail] = useState("")
-  const [message,setMessage] = useState("")
-  
+  const ButtonStyle = { margin: "0px 20px" };
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // useEffect(()=>{
+  //   setTimeout(()=>{
+  //     setLoading(false)
+  //   },3000)
+  // })
+
   const form = useRef();
   const sendEmail = (e) => {
-
     e.preventDefault();
 
-    if (email === ""){
-      errorNotify("Please enter valid email.")
+    if (!email) {
+      errorNotify("Please enter valid email.");
+      return;
     }
-    
 
-    if(!name || !message){
-      errorNotify("Please fill out all fields")
+    if (!name || !message) {
+      errorNotify("Please fill out all fields");
+      return;
     }
+
+    setLoading(true);
 
     emailjs
       .sendForm("service_4fkjxpe", "template_b4onrhi", form.current, {
@@ -50,14 +65,22 @@ const Contact = () => {
         (response) => {
           // console.log(e.target);
           sucessNotify(name);
-          console.log("Email Sent Sucessfully!",response.status);
+          console.log("Email Sent Sucessfully!", response.status);
+
+          setName("");
+          setEmail("");
+          setMessage("");
+
+          setLoading(false);
         },
         (error) => {
-          errorNotify("Failed to send email")
+          errorNotify("Failed to send email");
           console.log("Email sending failed...", error.text);
+          setLoading(false);
         }
       );
   };
+
   return (
     <section id="clients">
       <h2 className="clientTitle">My Clients</h2>
@@ -83,7 +106,7 @@ const Contact = () => {
             className="name"
             placeholder="Your Name"
             name="your_name"
-            onChange={(e)=> setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             value={email}
@@ -91,7 +114,7 @@ const Contact = () => {
             className="email"
             placeholder="Your Email"
             name="your_email"
-            onChange={(e)=> setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <textarea
             value={message}
@@ -99,17 +122,20 @@ const Contact = () => {
             className="msg"
             placeholder="Your Message"
             name="message"
-            onChange={(e)=> setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
-          <button
+          <BTN
+            loading={loading}
+            appearance="primary"
+            style={ButtonStyle}
             type="submit"
             value="send"
-            className="submitBtn"
+            classValue={"submitBtn"}
             onClick={sendEmail}
-            disabled={!name || !email || !message}
-          >
-            Submit
-          </button>
+            disabled={loading || !name || !email || !message}
+            name={"Submit"}
+          ></BTN>
+
           <Toaster />
           <div className="links">
             <img src={FacebookIcon} alt="Facebook" className="link" />

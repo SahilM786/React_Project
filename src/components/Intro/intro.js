@@ -3,6 +3,7 @@ import "./intro.css";
 import bg from "../../assets/image.png";
 import btnImg from "../../assets/hireme.png";
 import { Link } from "react-scroll";
+import BTN from "../Button/button";
 
 const Intro = () => {
   return (
@@ -19,10 +20,12 @@ const Intro = () => {
           visually appealing and user friendly websites{" "}
         </p>
         <Link to="contact" smooth={true} duration={500}>
-          <button className="btn" >
-            <img src={btnImg} alt="Hire me" className="btnImg" />
-            Hire me
-          </button>
+          <BTN
+            classValue={"btn"}
+            name={"Hire Me"}
+            imgPath={btnImg}
+            imgClassValue={"btnImg"}
+          ></BTN>
         </Link>
       </div>
       <img src={bg} alt="Profile" className="bg" />

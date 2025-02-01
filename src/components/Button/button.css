@@ -1,0 +1,17 @@
+.default-btn {
+  padding: 10px 20px;
+  border-color: rgb(30, 30, 30);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.default-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.primary-button:disabled {
+  background-color: #c0aabf;
+}
