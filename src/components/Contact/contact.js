@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import "./contact.css";
-import Client1 from "../../assets/walmart.png";
-import Client2 from "../../assets/adobe.png";
-import Client3 from "../../assets/microsoft.png";
-import Client4 from "../../assets/facebook.png";
+// import Client1 from "../../assets/walmart.png";
+// import Client2 from "../../assets/adobe.png";
+// import Client3 from "../../assets/microsoft.png";
+// import Client4 from "../../assets/facebook.png";
 import FacebookIcon from "../../assets/facebook-icon.png";
 import TwitterIcon from "../../assets/twitter.png";
 import YouTubeIcon from "../../assets/youtube.png";

@@ -48,7 +48,7 @@ const Navbar = () => {
         >
           Portfolio
         </Link>
-        <Link
+        {/* <Link
           activeClass="active"
           to="clients"
           spy={true}
@@ -58,7 +58,7 @@ const Navbar = () => {
           className="desktopMenuListItem"
         >
           Clients
-        </Link>
+        </Link> */}
       </div>
       <BTN
         classValue="desktopMenuBtn"
