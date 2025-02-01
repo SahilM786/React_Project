@@ -83,7 +83,7 @@ const Contact = () => {
 
   return (
     <section id="clients">
-      <h2 className="clientTitle">My Clients</h2>
+      {/* <h2 className="clientTitle">My Clients</h2>
       <div className="clientDesc">
         I have had the opportunity to work with a diverse group of companies.
         Some of the notable companies I have worked with include.
@@ -93,7 +93,7 @@ const Contact = () => {
         <img src={Client2} alt="adobe" className="clientImg" />
         <img src={Client3} alt="microsoft" className="clientImg" />
         <img src={Client4} alt="facebook" className="clientImg" />
-      </span>
+      </span> */}
       <section id="contact">
         <h1 className="contactPageTitle">Contact Me</h1>
         <span className="contactDesc">
