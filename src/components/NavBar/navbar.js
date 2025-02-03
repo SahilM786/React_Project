@@ -116,7 +116,7 @@ const Navbar = () => {
         >
           Portfolio
         </Link>
-        <Link
+        {/* <Link
           activeClass="active"
           to="clients"
           spy={true}
@@ -127,7 +127,7 @@ const Navbar = () => {
           onClick={() => setShowMenu(false)}
         >
           Clients
-        </Link>
+        </Link> */}
         <Link
           activeClass="active"
           to="contact"
